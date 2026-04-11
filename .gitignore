@@ -1,0 +1,8 @@
+# Cloned archives are large - track them via git submodules or download scripts
+# Uncomment if you want to exclude them from the main repo:
+# resources/complete-archive/
+# resources/cijhho-archive/
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,7 @@
+__pycache__/
+db/oeis_orig.txt
+db/oeis.txt
+other/ec-*.png
+other/ec-*.txt
+other/list-onions.txt
+tmp/

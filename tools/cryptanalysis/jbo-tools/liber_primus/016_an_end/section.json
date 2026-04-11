@@ -1,0 +1,17 @@
+{
+    "title" : "AN END",
+    "transformers": [
+        {
+            "type": "TotientPrimeTransformer",
+            "add": false,
+            "interrupt_indices": [ 56 ]
+        }
+    ],
+    "pages": [
+        {
+            "number": 56,
+            "filename": "56.jpg",
+            "text": "<ᚫᛄ-ᛟᛋᚱ.>ᛗᚣᛚᚩᚻ-ᚩᚫ-ᚳᚦᚷᚹ-ᚹᛚᚫ.ᛉ\nᚩᚪᛈ-ᛗᛞᛞᚢᚷᚹ-ᛚ-ᛞᚾᚣᛄ-ᚳᚠᛡ-ᚫᛏ\nᛈᛇᚪᚦ-ᚳᚫ<.>\n\n36367763ab73783c7af284446c\n59466b4cd653239a311cb7116\nd4618dee09a8425893dc7500b\n464fdaf1672d7bef5e891c6e227\n4568926a49fb4f45132c2a8b4\n\nᚳᛞ-ᚠᚾ-ᛡᛖ-ᚠᚾᚳᛝ-ᚱᚠ-ᚫᛁᚱᛞᛖ-ᛋᚣᛄᛠᚢ\nᛝᚹ-ᛉᚩ-ᛗᛠᚹᚠ-ᚱᚷᛡ-ᛝᚱᛒ-ᚫᚾᚢᛋ<.>"
+        }
+    ]
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0" />
+	<title>0_koan_1 – Page Analysis</title>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+	<nav class="small">
+		<a href="../index.html" class="home"></a>
+		<a href="#top">Top</a>
+		<a href="#ioc">IoC</a>
+		<a href="#mod-ioc">Mod-IoC</a>
+		<a href="#pattern-ioc">Pattern-IoC</a>
+	</nav>
+	<h1 id="top">Page Analysis: 0_koan_1</h1>
+	<p>
+		For a basic “Count”, “Double-Letter Occurrence”, “Running IoC”, and “Concealment” analysis use this, general purpose, <a href="../analysis.html?file=0_koan_1">cipher analysis tool</a>.
+	</p>
+
+	<h2 id="ioc">Index of Coincidence (IoC)</h2>
+	<p>
+		Quick IoC recap: Normal rune-english IoC is about 1.77.
+		Values below 1.4 are highly unlikely to be anywhat meaningful.
+		Predicting english text with IoC gets worse if the text is very short.
+	</p>
+	<p>
+		Here, we are considering either ᚠ being an interrupt; or it's inverse ᛠ.
+		The numbers (1–32) represent the key length.
+		With a key length of 5, every fifth rune will be decrypted with the same alphabet.
+	</p>
+	<p>
+		<b>Note:</b> The darker the cell, the better the prediction.
+		The runes per length columns influences the results of the other columns; so if this is low, the other columns are not reliable.
+	</p>
+	<table>
+<tr><th></th><th colspan="2">IoC-<a href="./ioc/high.html">high</a></th><th colspan="2">IoC-<a href="./ioc/norm.html">norm</a></th><th colspan="2">Runes / keylen</th></tr>
+<tr><th></th><th>ᚠ</th><th>ᛠ</th><th>ᚠ</th><th>ᛠ</th><th>ᚠ</th><th>ᛠ</th></tr>
+<tr><th>1</th><td class="m15">2.05</td><td class="m15">2.18</td><td class="m11">0.82</td><td class="m9">0.75</td><td class="m15">652</td><td class="m15">222</td></tr>
+<tr><th>2</th><td class="m15">2.17</td><td class="m15">2.47</td><td class="m11">0.85</td><td class="m12">0.86</td><td class="m15">326</td><td class="m15">111</td></tr>
+<tr><th>3</th><td class="m15">2.38</td><td class="m15">2.79</td><td class="m12">0.87</td><td class="m13">0.93</td><td class="m15">217</td><td class="m9">74</td></tr>
+<tr><th>4</th><td class="m15">2.21</td><td class="m15">2.81</td><td class="m12">0.88</td><td class="m14">0.97</td><td class="m15">163</td><td class="m6">55</td></tr>
+<tr><th>5</th><td class="m15">2.25</td><td class="m15">2.79</td><td class="m13">0.91</td><td class="m14">0.97</td><td class="m15">130</td><td class="m4">44</td></tr>
+<tr><th>6</th><td class="m15">2.60</td><td class="m15">2.82</td><td class="m12">0.89</td><td class="m14">0.96</td><td class="m15">108</td><td class="m2">37</td></tr>
+<tr><th>7</th><td class="m15">2.33</td><td class="m15">2.83</td><td class="m13">0.91</td><td class="m14">0.96</td><td class="m13">93</td><td class="m1">31</td></tr>
+<tr><th>8</th><td class="m15">2.24</td><td class="m15">2.93</td><td class="m13">0.92</td><td class="m14">0.95</td><td class="m11">81</td><td class="m0">27</td></tr>
+<tr><th>9</th><td class="m15">2.60</td><td class="m15">3.11</td><td class="m13">0.91</td><td class="m13">0.91</td><td class="m9">72</td><td class="m0">24</td></tr>
+<tr><th>10</th><td class="m15">2.33</td><td class="m15">3.18</td><td class="m14">0.96</td><td class="m12">0.89</td><td class="m8">65</td><td class="m0">22</td></tr>
+<tr><th>11</th><td class="m15">2.36</td><td class="m15">3.09</td><td class="m13">0.92</td><td class="m12">0.88</td><td class="m7">59</td><td class="m0">20</td></tr>
+<tr><th>12</th><td class="m15">2.70</td><td class="m15">3.27</td><td class="m12">0.89</td><td class="m12">0.87</td><td class="m6">54</td><td class="m0">18</td></tr>
+<tr><th>13</th><td class="m15">2.35</td><td class="m15">3.04</td><td class="m13">0.91</td><td class="m11">0.82</td><td class="m5">50</td><td class="m0">17</td></tr>
+<tr><th>14</th><td class="m15">2.53</td><td class="m15">3.18</td><td class="m12">0.90</td><td class="m10">0.79</td><td class="m4">46</td><td class="m0">15</td></tr>
+<tr><th>15</th><td class="m15">2.40</td><td class="m15">3.48</td><td class="m13">0.93</td><td class="m10">0.81</td><td class="m3">43</td><td class="m0">14</td></tr>
+<tr><th>16</th><td class="m15">2.45</td><td class="m15">3.23</td><td class="m12">0.89</td><td class="m10">0.79</td><td class="m3">40</td><td class="m0">13</td></tr>
+<tr><th>17</th><td class="m15">2.47</td><td class="m15">3.25</td><td class="m12">0.88</td><td class="m10">0.78</td><td class="m2">38</td><td class="m0">13</td></tr>
+<tr><th>18</th><td class="m15">2.89</td><td class="m15">3.75</td><td class="m12">0.89</td><td class="m11">0.85</td><td class="m2">36</td><td class="m0">12</td></tr>
+<tr><th>19</th><td class="m15">2.31</td><td class="m15">2.85</td><td class="m12">0.87</td><td class="m9">0.74</td><td class="m2">34</td><td class="m0">11</td></tr>
+<tr><th>20</th><td class="m15">2.31</td><td class="m15">4.27</td><td class="m12">0.88</td><td class="m6">0.64</td><td class="m1">32</td><td class="m0">11</td></tr>
+<tr><th>21</th><td class="m15">2.54</td><td class="m15">4.15</td><td class="m12">0.86</td><td class="m7">0.67</td><td class="m1">31</td><td class="m0">10</td></tr>
+<tr><th>22</th><td class="m15">2.69</td><td class="m15">3.87</td><td class="m12">0.86</td><td class="m6">0.62</td><td class="m1">29</td><td class="m0">10</td></tr>
+<tr><th>23</th><td class="m15">2.54</td><td class="m15">2.90</td><td class="m11">0.85</td><td class="m6">0.62</td><td class="m0">28</td><td class="m0">9</td></tr>
+<tr><th>24</th><td class="m15">2.57</td><td class="m15">3.28</td><td class="m11">0.84</td><td class="m5">0.60</td><td class="m0">27</td><td class="m0">9</td></tr>
+<tr><th>25</th><td class="m15">2.49</td><td class="m15">3.31</td><td class="m11">0.83</td><td class="m3">0.51</td><td class="m0">26</td><td class="m0">8</td></tr>
+<tr><th>26</th><td class="m15">2.49</td><td class="m15">3.86</td><td class="m11">0.82</td><td class="m0">0.39</td><td class="m0">25</td><td class="m0">8</td></tr>
+<tr><th>27</th><td class="m15">2.61</td><td class="m15">4.55</td><td class="m11">0.82</td><td class="m1">0.44</td><td class="m0">24</td><td class="m0">8</td></tr>
+<tr><th>28</th><td class="m15">2.67</td><td class="m15">3.83</td><td class="m9">0.76</td><td class="m0">0.40</td><td class="m0">23</td><td class="m0">7</td></tr>
+<tr><th>29</th><td class="m15">2.69</td><td class="m15">3.99</td><td class="m10">0.81</td><td class="m0">0.38</td><td class="m0">22</td><td class="m0">7</td></tr>
+<tr><th>30</th><td class="m15">2.61</td><td class="m15">3.82</td><td class="m10">0.81</td><td class="m0">0.39</td><td class="m0">21</td><td class="m0">7</td></tr>
+<tr><th>31</th><td class="m15">2.74</td><td class="m15">3.69</td><td class="m9">0.76</td><td class="m1">0.42</td><td class="m0">21</td><td class="m0">7</td></tr>
+<tr><th>32</th><td class="m15">2.56</td><td class="m15">3.41</td><td class="m10">0.79</td><td class="m1">0.41</td><td class="m0">20</td><td class="m0">6</td></tr>
+<tr class="small"><th>best</th><td>18</td><td>27</td><td>10</td><td>5</td></tr>
+</table>
+
+
+	<h2 id="mod-ioc">Modulo IoC</h2>
+	<p>
+		This section explores the idea of multiple alphabet-sets alternating.
+		For example, have two or three Vigenere ciphers that switch after each rune.
+		A Vigenere with key length 3 (ABC) plus another Vigenere with key length 4 (DEFG) will generate a pattern that only repeats after 24 runes (ADBECFAGBDCEAFBGCDAEBFCG).
+		So, the first group will represent every 2nd letter (starting with the first), and the second group will also contain every 2nd letter but starting with the second.
+	</p>
+	<p>
+		There are two main distinctions.
+		Interrupt-first-then-mod assumes that an interrupt will pause the alternation between the different groups.
+		Mod-first-then-interrupt assumes that an interrupt will pause the key alternation within that group.
+		Lets look at the example Vig(3) + Vig(5).
+		With the first, the decryption sequence is: Vig(3)[0], interrupt, Vig(5)[0], Vig(3)[1], etc.
+		With the second, the decryption sequence is: Vig(3)[0], interrupt, Vig(3)[1], Vig(5)[0], etc.
+		Note that the second decryption still switched to Vig(5) but was ignored because it was an interrupt.
+	</p>
+	<p>
+		<b>Note:</b> The row header format is {interrupt}.{mod}.{offset}.
+		“ᚠ.2.0” means, assume the interrupt is ᚠ, divide the data into two sets, then look at the first set (rune at index 0, rune at index 2, etc.).
+		The column shows the key length for which the IoC was calculated.
+		In the previous example, with a key length of 7, indices 0, 14, 28, ... are part of one alphabet, and indices 2, 17, 30, ... are part of another alphabet.
+		Both are from the same alphabet-set!
+	</p>
+	<p class="red">Mod-IoC is disabled on solved pages</p>
+
+
+	<h2 id="pattern-ioc">Pattern IoC</h2>
+	<p>
+		This section looks at different ways to extend a short key into a longer one.
+		The result of this expansion is still a plain Vigenere-like encryption but the key is so long that we would not be able to find it with IoC analysis.
+		However, we can use the fact that the same letters appear again and so there are less alphabets than the key length.
+	</p>
+	<p>
+		The two mirror pattern variants simply flip the key in reverse and append it to the original key.
+		For example, the key ABCD will become ABCDDCBA (Variant A) or ABCDCB (Variant B).
+		Both keys will repeat after that.
+		Notice how the first variant produces double letters (DD and AA) and the second does not.
+	</p>
+	<p>
+		The shift pattern simply offsets the key by one and appends this permutation to the key.
+		For example, ABCD becomes ABCDBCDACDABDABC.
+		Each key length n (here 4) has n - 1 shifts.
+		The example before was shift = 1.
+		The other two are ABCDCDAB (shift=2) and ABCDDABCCDABBCDA (shift=3).
+		And again, like with the mirror pattern, we greatly increase the key length without increasing the alphabet count.
+	</p>
+	<p>
+		<b>Note:</b> While the column in the mirror pattern represents the key length, the column in the shift pattern is <b>not</b> the key length.
+		Instead, the key length is given in the row title, e.g., “ᚠ.5”. The column header represents the key shift variation.
+	</p>
+	<p class="red">Pattern-IoC is disabled on solved pages</p>
+
+
+</body>
+</html>

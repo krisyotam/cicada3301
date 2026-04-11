@@ -1,0 +1,5 @@
+data/*.txt linguist-generated
+db/*.txt linguist-generated
+results/index.html linguist-generated
+results/pages/*.html linguist-generated
+results/ioc/*.html linguist-generated

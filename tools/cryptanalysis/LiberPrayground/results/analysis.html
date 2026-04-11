@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0" />
+	<title>Cipher Analysis</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="analysis.js?2"></script>
+</head>
+<body>
+	<nav class="small">
+		<a href="./index.html" class="home"></a>
+		<a href="#top">Top</a>
+		<a href="#count">Count</a>
+		<a href="#double-letter">Double-Letter</a>
+		<a href="#ioc">IoC</a>
+		<a href="#mod-ioc">Mod-IoC</a>
+		<a href="#pattern-ioc">Pattern-IoC</a>
+		<a href="#running-ioc">Running-IoC</a>
+		<a href="#concealment">Concealment</a>
+	</nav>
+	<h1 id="top">Cipher Analysis</h1>
+	<p>
+		A few things beforehand: The colored cells you see indicate either value importance or simply display the range of the shown numbers.
+		For example, the color in the <a href="#count">Count</a> and <a href="#double-letter">Double-Letter Occurrence</a> sections are white for the lowest value, and black for the highest value.
+	</p>
+	<p>
+		For all Index of Occurrence (IoC) sections the color of the cell indicates how good the prediction is.
+		Higher IoC values are usually associated with more “normal” english text (see section <a href="#ioc">IoC</a> for a quick recap).
+		Values below 1.25 are white; values above 1.65 are dark.
+	</p>
+	<p>
+		A different color coding scheme is used for the letter per keylen value. This color range depends on the alphabet length.
+		Since IoC calculations are not reliable at very low input texts, we mark these cells as well.
+		We require the input to be at least 0.9x as long as the alphabet.
+		Of course this is still too little text for IoC, but most frequent letters will appear anyway (and probably multiple times).
+		Texts that are 3x as long as the alphabet are considered good length.
+	</p>
+	<dl>
+		<dt><label for="abc">Alphabet:</label></dt>
+		<dd>
+			<input id="abc" style="width: 250px" type="text" value="ᚠᚢᚦᚩᚱᚳᚷᚹᚻᚾᛁᛄᛇᛈᛉᛋᛏᛒᛖᛗᛚᛝᛟᛞᚪᚫᚣᛡᛠ">
+			<span class="small">⤳ everything else is treated as whitespace</span>
+		</dd>
+
+		<dt><label for="abc_123">Translate to:</label></dt>
+		<dd>
+			<input id="abc_123" style="width: 400px" type="text" value="F U TH O R C G W H N I J EO P X S T B E M L NG OE D A AE Y IA EA">
+			<span class="small">⤳ separated by space, currently only used in concealment analysis</span>
+		</dd>
+
+		<dt><label for="input">Input:</label></dt>
+		<dd><textarea id="input" cols="60" rows="10">
+ᛋᚻᛖᚩᚷᛗᛡᚠ•ᛋᚣᛖᛝᚳ⁜ᚦᛄᚷᚫ•ᚠᛄᛟ•
+ᚩᚾᚦ•ᚾᛖᚹᛒᚪᛋᛟᛇᛁᛝᚢ•ᚾᚫᚷᛁᚦ•ᚻᛒᚾᛡ•
+ᛈᛒᚾ•ᛇᛄᚦ•ᚪᛝᚣᛉ•ᛒᛞᛈ•ᛖᛡᚠᛉᚷᚠ•
+ᛋᛈᛏᚠᛈᚢᛝᚣᛝᛉᛡ•ᚣᚻ•ᛒᚢ•ᚷᚩᛈ•ᛝᚫᚦ•ᛁ
+ᚫᚻᛉᚦᛈᚷ•ᚣᚠᛝᚳᛄ•ᚦᚪᛗᛁᛝᛁᛡᚣ•ᚻᛇ•ᛏᚻᚫ
+ᛡ•ᛉᚣ•ᛖᚢᛝ•ᚳᚠᚾ•ᛇᚦᛄᛁᚦ•ᚦᛈ•ᚣᛝᛠ•ᚣᚾ
+ᛖᚣ•ᛞᛉᛝᚹ•ᛒᚳᛉᛞᛒᚠ•ᛗᛏᚾᛖ•ᛠᛄᚾᛚᚷ
+ᛒ•ᛉᚷᚦ⁘ᚣᛁᛞᚪ•ᛝᚷᛗᛄᚱᚩᛚᛇ•ᚣᛏᛈᛁᚦᛞᛄ•
+ᛟᚻᛚ•ᛠ•ᚠᛉᚫᛈᚷᛉ•ᚠᛚᚹᛇᛏᚫ•ᚠᚷᚾ•ᛗᛇᛚᚾ•
+ᛝᛗᚠᚱᛡ•ᚪᛋ•ᛠᛗᛝᛉᛉᛇᛞᛒ•ᛟᛞᛗᚩ•ᛠ
+ᛇᚻ•ᛞᛝᚷ•ᛟᛝᛚᚢᚱᚾᛏ•ᚫᛋᚣᚢᚻᚱᛏ•ᚻᚳ•ᛋᛟ
+ᛏᛟᛝᚢᚱ•ᛋ•ᚠᚩᛖᚹᛠᛟᛚᚠᚫ•ᛗᚱᛝ•ᛞᚪᛗᚱ•ᚹ
+
+ᚪᛁᛗᛋᚾ•ᛋᛟᚱᚢᚹᛋᛚᛡ⁘ᛟᚪᚫᛝᛋᛞᛈᛏ•ᚳᚱᚦ
+ᛡ•ᚱᛒᚩᛞᚦᚠ•ᚣᛉᛁᛏ⁘ᛟᛁ•ᚠᛚᚩ•ᚠᛠ•ᚱᚩᛟᛗᚻ
+ᛗᚷᛈᚻ•ᚫᚻᚾᚩᚻᚣ•ᛟᛋᛚ•ᚾᚷ•ᚫᚣ•ᛟᚳᛒᛚᛄ•ᛝ
+ᛚᛟ•ᚫᛄᛠᚹ•ᛠᚦᚩ•ᛒᛟᚣ•ᚳᚠᚳᛄ•ᛚᚫ⁘ᚾ•ᚦᛈ•
+ᚢᛉ•ᛟᛉᚷ•ᛈᚠᛋᛇᚫᛟ•ᛝᛈᛇᚩᛖᚪ•ᚷᚫᛡᛝᚦᚩ
+•ᛈᚪᛟᚦᚱᛝᚫ•ᚳᛋᛒᛇᚣᚻ•ᛏᛉᛖᛚᚱ⁘ᚷᚹᚣ•ᛄᚠ
+ᛁᚾᛡᚳᚣᛠᛁᛡ•ᚩᚦ•ᛖᚳᚫᚳᛉᛡᛠ•ᚩᛚᚳ•ᚠᚱ
+ᛞᛝᛖᚢ•ᛞᚳᛚᛠᛋᛉᚳᚷᛡ⁘ᚹᛋᚦ•ᚠᛞᛝ•ᛁᛡ
+ᛗᚪᚫᚷ•ᚹᛋ•ᚾᛞ•ᚳᛈᚦᛉᛈᛠᛠ•ᚹᚢ•ᛠᚹ•ᚠᚹ
+ᛄᚣ•ᛉᛞᚹᚳᚷᚳᛟ•ᛞᛉᛟ•ᚱᛡᚷ•ᚾᛈᚪᚣᛈ•ᚳ
+ᚣᚻ•ᚠᛖᛄᛠᚾ•ᛟᚫ•ᚢᚪ•ᚻᚱ•ᛖᛠᚦᚠᛄᚪ•ᛚᛉ
+ᛋᛏ•ᛗᚠᛚᚠᛏ•ᚷᛁᚦ•ᚢᛚᚷ•ᛉᛠᛏᛋᛚᛄᛈ•ᛚᛉᛁ
+
+ᛟᛗ•ᚢ⁘ᚻᛏ•ᛒᛇᛚᛞᚻᛒᛗ•ᛠᚱᛒ•ᚾᚻᛒᛖᚷᛇ•
+ᛞᛚᚹᛇᛡᛈᚩ•ᚻᛖᛠ•ᚹᛁᚱᛁᚻ•ᚢᚦᚻᚣ•ᚾᛉᛒᚷᛄ
+ᛈᚢ•ᛝᛠᚠᚾᛁᛖᛞᛡᛝᚱ•ᛞᛒᛄᛡᛟᛗᛁ•ᚠᛏ•ᛄ
+ᛞᛁᚦᚱᛚᛋ•ᛖᛇᚩᚷᛒᛏᛞ•ᚦᚪᚾᚳᚣ•ᛡᛋᚦᛞ•ᛝᚠᛚ
+ᛖᚷᚻᚳ•ᛖᚩᛁᛏᚾᛉ•ᛈᛏᚠᚻᚱᛞᛖᚠᛏ•ᚫᚹᚻ•ᛒ
+ᚳ•ᚠ•ᛈᚪᛚᚢᛠᚾᛚᛄ•ᛄᚳᛚᚹᛠᛞᚢᛞᛇ•ᛠᛉ
+ᛞᚹᚻᛠ•ᚦᛡᚫᚳᛚᛏᚹᛖᛁᚳ•ᛈᛟᛞᚳ•ᚾᚻᚪ•ᚱᛁᚷ
+ᚦᛠᛖᛏᚷ•ᚦᚻᚩᛡᚹᚫᛄᛖ•ᛝᛠᛞ•ᚩᚫ•ᚪᛚ•ᛒᛄ
+ᚳᚢᛉᛏᚪᛒᛄᛈ•ᚠᛠ•ᚻᛞᚾᛡᚢᛈᛋᚢᚹ⁜
+		</textarea><br><br>
+		<label for="fileload">Load from file:</label>
+		<select id="fileload">
+			<option value="p0-2">Chapter: p0–2</option>
+			<option value="p3-7">Chapter: p3–7</option>
+			<option value="p8-14">Chapter: p8–14</option>
+			<option value="p15-22">Chapter: p15–22</option>
+			<option value="p23-26">Chapter: p23–26</option>
+			<option value="p27-32">Chapter: p27–32</option>
+			<option value="p33-39">Chapter: p33–39</option>
+			<option value="p40-53">Chapter: p40–53</option>
+			<option value="p54-55">Chapter: p54–55</option>
+			<option value="0_koan_1">Solved: Koan 1 (cipher)</option>
+			<option value="solved_0_koan_1">Solved: Koan 1 (plain)</option>
+			<option value="0_loss_of_divinity">Solved: Loss of Divinity (cipher)</option>
+			<option value="solved_0_loss_of_divinity">Solved: Loss of Divinity (plain)</option>
+			<option value="0_warning">Solved: Warning (cipher)</option>
+			<option value="solved_0_warning">Solved: Warning (plain)</option>
+			<option value="0_welcome">Solved: Welcome (cipher)</option>
+			<option value="solved_0_welcome">Solved: Welcome (plain)</option>
+			<option value="0_wisdom">Solved: Wisdom (cipher)</option>
+			<option value="solved_0_wisdom">Solved: Wisdom (plain)</option>
+			<option value="jpg107-167">Solved: jpg107-167 (cipher)</option>
+			<option value="solved_jpg107-167">Solved: jpg107-167 (plain)</option>
+			<option value="jpg229">Solved: jpg229 (cipher)</option>
+			<option value="solved_jpg229">Solved: jpg229 (plain)</option>
+			<option value="p56_an_end">Solved: p56 An End (cipher)</option>
+			<option value="solved_p56_an_end">Solved: p56 An End (plain)</option>
+			<option value="p57_parable">Solved: p57 Parable (cipher)</option>
+			<option value="solved_p57_parable">Solved: p57 Parable (plain)</option>
+		</select>
+		<button onclick="load_from_file()">load</button>
+		</dd>
+
+		<dt>IoC color range:</dt>
+		<dd>
+			<label for="ioc_min">white:</label>
+			<input id="ioc_min" type="number" value="1.25" step="0.05" placeholder="1.25">
+			–
+			<label for="ioc_max">dark:</label>
+			<input id="ioc_max" type="number" value="1.65" step="0.05" placeholder="1.65">
+			(rune-english: 1.77)
+		</dd>
+
+		<dt><label for="btn_analyze">Analyze:</label></dt>
+		<dd>
+			<button id="btn_analyze" onclick="start_analyze()">Analyze</button>
+			<input id="chk_nonl" type="checkbox" checked>
+			<label for="chk_nonl">Ignore newline</label>
+		</dd>
+	</dl>
+
+	<h2 id="count">Count</h2>
+	<p>
+		2-grams, 3-grams, and 4-grams are selected with a moving window.
+		So, ABCD will have the 2-grams AB, BC, and CD.
+		For bi-grams, the first letter is row, the second its column.
+		Hover on a cell to see the actual n-gram.
+	</p>
+	<div id="sec_counts">[…]</div>
+
+	<h2 id="double-letter">Double-Letter Occurrence</h2>
+	<p>
+		The following analysis looks at two neighboring letters.
+		Whenever two identical letters appear one after another, the number sequence will print a “1” on dark background.
+	</p>
+	<p>
+		Letter difference looks at the shortest distance between two neighbors.
+		Maximum value is alphabet length / 2, if they are farthest apart.
+		The value is zero if they are identical.
+	</p>
+	<p>
+		<b>Note:</b> Hover on a cell to see the offset (count using non-whitespace only).
+	</p>
+	<div id="sec_double">[…]</div>
+	
+	<h2 id="ioc">Index of Coincidence (IoC)</h2>
+	<p>
+		Quick IoC recap: Normal rune-english IoC is about 1.77.
+		Values below 1.4 are highly unlikely to be anywhat meaningful.
+		Predicting english text with IoC gets worse if the text is very short.
+	</p>
+	<p>
+		Here, we look at periodic ciphers (e.g., Vigenere) and split the input text into different key lengths (1–32).
+		With a key length of 5, every fifth letter will be decrypted with the same alphabet.
+		This does not take into account possible interrupts (commonly used in the Liber Primus); if you are interested, there are a few <a href="./index.html#analysis-w-interrupt">analyses</a> on these.
+	</p>
+	<p>
+		<b>Note:</b> Look at the letter per key length value first, if the cell is white, the IoC calculation is not reliable!
+	</p>
+	<div id="sec_ioc">[…]</div>
+
+	<h2 id="mod-ioc">Modulo IoC</h2>
+	<p>
+		This section explores the idea of multiple alphabet-sets alternating.
+		For example, have two or three Vigenere ciphers that switch after each letter.
+		A Vigenere with key length 3 (ABC) plus another Vigenere with key length 4 (DEFG) will generate a pattern that only repeats after 24 letters (ADBECFAGBDCEAFBGCDAEBFCG).
+		So, the first group will represent every 2nd letter (starting with the first), and the second group will also contain every 2nd letter but starting with the second.
+		Again, this does not take into account interrupts, see <a href="./index.html#analysis-w-interrupt">these</a> results instead.
+	</p>
+	<p>
+		<b>Note:</b> For a key length of 7, indices 0, 14, 28, ... are part of one alphabet, and indices 2, 17, 30, ... are part of another alphabet.
+		Both are from the same alphabet-set!
+	</p>
+	<div id="sec_ioc_mod">[…]</div>
+
+	<h2 id="pattern-ioc">Pattern IoC</h2>
+	<p>
+		This section looks at different ways to extend a short key into a longer one.
+		The result of this expansion is still a plain Vigenere-like encryption but the key is so long that we would not be able to find it with IoC analysis.
+		However, we can use the fact that the same letters appear again and so there are less alphabets than the key length.
+	</p>
+	<p>
+		The two mirror pattern variants simply flip the key in reverse and append it to the original key.
+		For example, the key ABCD will become ABCDDCBA (Variant A) or ABCDCB (Variant B).
+		Both keys will repeat after that.
+		Notice how the first variant produces double letters (DD and AA) and the second does not.
+	</p>
+	<p>
+		The shift pattern simply offsets the key by one and appends this permutation to the key.
+		For example, ABCD becomes ABCDBCDACDABDABC.
+		Each key length n (here 4) has n shifts.
+		A shift of zero is normal Vigenere without permutations.
+		The example above uses shift = 1; the other two permutations are ABCDCDAB (shift=2) and ABCDDABCCDABBCDA (shift=3).
+		And again, like with the mirror pattern, we greatly increase the key length without increasing the alphabet count.
+	</p>
+	<p>
+		<b>Note:</b> Shift values greater than its key length, will produce identical patterns; so they are excluded from this table.
+		Again, this does not take into account interrupts, see <a href="./index.html#analysis-w-interrupt">these</a> results instead.
+	</p>
+	<div id="sec_ioc_pattern">[…]</div>
+
+	<h2 id="running-ioc">Running IoC</h2>
+	<p>
+		This section perfoms a running IoC analysis with a window size on the whole text.
+		For example, a window size of 50 will calculate the IoC of the first 50 letters.
+		This will be the first value in the list.
+		The text is offsetted by one and the next 50 letters are evaluated.
+		This continues to the last set of 50 letters.
+	</p>
+	<p>
+		Same rules apply as to normal IoC analysis; an IoC on 20 letters is just too small to get a meaningful result.
+		But it helps to get the bigger picture ;).
+	</p>
+	<div id="sec_ioc_flow">[…]</div>
+
+	<h2 id="concealment">Concealment Analysis</h2>
+	<p>
+		Concealment ciphers hide text in plain sight.
+		Here, we look at every n-th word, as well as every first and last letter of each word (which is performed on all possible veriations).
+	</p>
+	<div id="sec_conceal">[…]</div>
+
+	<script type="text/javascript">
+		const params = new URLSearchParams(window.location.search);
+		const fname = params.get('file');
+		if (fname) {
+			var obj = document.getElementById('fileload');
+			obj.value = fname;
+			if (obj.value) {
+				load_from_file();
+			} else {
+				document.getElementById('input').value = 'Error loading file "' + fname + '"';
+			}
+		} else {
+			start_analyze();
+		}
+	</script>
+</body>
+</html>
