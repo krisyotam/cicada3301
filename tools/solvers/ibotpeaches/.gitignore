@@ -1,0 +1,9 @@
+# IDEs
+.idea
+
+# Cicada OS
+iso/*
+
+# Service
+other/service/src/files
+other/service/src/log.txt

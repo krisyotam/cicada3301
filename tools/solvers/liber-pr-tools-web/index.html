@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>LiberPrTools</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="cpp-stub.js"></script>
+        <script src="GPVigenere_Decipher_v1Release.js"></script>
+        <style>
+            body,html,*{
+                margin:0;padding:0;border:0;
+            }
+            #screen{
+                font: 1.3rem Inconsolata, monospace;
+                background-color: black;
+                background-image: radial-gradient(
+                  rgba(55, 75, 55, 0.75), black 120%
+                );
+                height: 100vh;
+                overflow: scroll;
+                color:white;
+            }
+            #terminal{
+                margin:1rem;
+            }
+            #screen input{
+                background: transparent;
+                border: 1px solid green;
+                color:white;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="screen"><pre id="terminal"></pre></div>
+        <script>cin_html_fixfocus(); call_with_exceptions(main);</script>
+    </body>
+</html>

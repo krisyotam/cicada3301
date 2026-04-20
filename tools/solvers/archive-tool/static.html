@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>title</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="http://code.jquery.com/jquery.js"></script>
+</head>
+<body>
+    <div class="center container">
+        <h1>CicadaArchive</h1>
+        <div class="row">
+            <div class="input-field col s6 offset-s3">
+                <i class="material-icons prefix">search</i>
+                <input id="tag-search" type="text" />
+                <label for="tag-search">Tag Search</label>
+            </div>
+        </div>
+        <div id="file" class="card"></div>
+        <div id="metadata" class="card row">
+            <div class="input-field col s6">
+                <input id="name" type="text" class="validate">
+                <label for="name">Formatted name</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="start" type="text" class="validate datepicker">
+                <label for="start">Published/start date</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="time" type="text" class="validate timepicker">
+                <label for="time">Time</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="end" type="text" class="validate datepicker">
+                <label for="end">End date (if range)</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="source" type="text" class="validate">
+                <label for="source">File source/origin</label>
+            </div>
+            <div class="input-field col s6">
+                <input id="author" type="text" class="validate">
+                <label for="author">File source/origin</label>
+            </div>
+        </div>
+        <div id="tags" class="collection card"></div>
+        <button id="skip" class="btn-large waves-effect waves-light">Skip File</button>
+        <button id="tag" class="btn-large waves-effect waves-light">Save</button>
+    </div>
+<script>
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, {});
+    var elems = document.querySelectorAll('.timepicker');
+    var instances = M.Timepicker.init(elems, {});
+    var file_list;
+    var file_index;
+    var tagfile;
+    var file_tags = [];
+    var tag_chips = {};
+    $(document).ready(function(e){
+        $.get("/1/get_untagged", function(files){
+            file_list = JSON.parse(files);
+            file_index = 0;
+            var file = file_list[file_index];
+            tag_file(file.path, file.tags, {});
+        })
+        $.get("/tags.json", function(data){
+            tagfile = data;
+        })
+    });
+
+    $("#skip").click(function(e) {
+        file_index += 1;
+        file_tags = [];
+        tag_file(file_list[file_index].path, file_list[file_index].tags);
+    });
+
+    function tag_file(path, tags, meta) {
+        // decide on the filetype
+        var ext = path.split(".").pop();
+        // image
+        var img_ext = ["png", "jpg", "jpeg", "bmp", "gif", "webp"];
+        var cat_ext = ["txt"];
+        $("#file").empty();
+        $("#tags").empty();
+        $("#file").append($("<h3>").text(path));
+        if (img_ext.indexOf(ext) >= 0){
+            $("#file").append($("<img>").attr("src", path));
+        }
+        if (cat_ext.indexOf(ext) >= 0) {
+            $.get(path, function(text) {
+                $("#file").append($("<pre>").text(text));
+            });
+        }
+        load_tags(tags)
+    }
+
+    function load_tags(tags) {
+        for (var tag in tagfile) {
+            new_tag_tree(tag, tagfile[tag]);
+        }
+        for (var t in tags) {
+            var tag = tags[t];
+            for (var i=0; i<tag.length-1; i += 2) {
+                tag_chips[tag[i]][tag[i+1]].click();
+            }
+        }
+    }
+
+    function new_tag_tree(name, tags, target, tag_tree) {
+        var tag_tree = tag_tree || [];
+        var line = $("<div>").addClass("collection-item").append(
+            $("<span>").text(name + ": ").addClass("title")
+        ).data({tags: tags, tag_tree: tag_tree});
+        var chips = {};
+        for (tag in tags) {
+            var chip = $("<div>").addClass("chip").text(tag).click(function(e) {
+                $(e.target).addClass("green");
+                var sub_tags = $(e.target.parentElement).data().tags;
+                // remove the old tag from the tree
+                var index = file_tags.indexOf($(e.target.parentElement).data().tag_tree);
+                if (index > -1) {
+                    file_tags.splice(index, 1);
+                }
+                // add the new tag
+                var tag_tree_copy = tag_tree.slice();
+                tag_tree_copy.push(name, $(e.target).text());
+                file_tags.push(tag_tree_copy);
+                for (var sub_tag in sub_tags[$(e.target).text()]) {
+                    new_tag_tree(sub_tag, sub_tags[$(e.target).text()][sub_tag], e.target, tag_tree_copy);
+                }
+                $(e.target).off("click");
+            });
+            chips[tag] = chip;
+            line.append(chip);
+        }
+        tag_chips[name] = chips;
+        if (target != undefined) {
+            $(target.parentElement).after(line);
+        }
+        else {
+            $("#tags").append(line);
+        }
+    }
+</script>
+</body>
+</html>

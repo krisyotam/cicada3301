@@ -1,0 +1,53 @@
+//task to decrypt the "A Warning" section
+{"inputFileName":"aWarning.txt", "outputFileName": "atbash","taskType":"decrypt", "pipeline":[{"cipher":"atbash"}]}
+
+//task to decrypt the First Koan
+{"inputFileName":"firstKoan.txt", "outputFileName": "atbashThenShift","taskType":"decrypt", "pipeline":[{"cipher":"atbash"}, {"cipher":"shift", "by":"3"}]}
+
+//task to decrypt the Welcome part
+{"inputFileName":"welcome.txt","outputFileName": "vigenere","taskType":"decrypt", "pipeline":[{"cipher":"vigenere", "key":"ᛞᛁᚢᛁᚾᛁᛏᚣ", "splitBy":"segment"}]}
+
+//Hill cipher using the first 5x5 matrix (it's symmetric; trace:1033)
+{"inputFileName":"unsolved.txt","outputFileName": "firstMatrix","taskType":"decrypt", "pipeline":[{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[[272, 138, 341, 131, 151],[366, 199, 130, 320, 18],[226, 245, 91, 245, 226],[18, 320, 130, 199, 366],[151, 131, 341, 138, 272]]}]}
+
+//Hill cipher using the second 5x5 matrix (it's symmetric; trace is 3301)
+{"inputFileName":"unsolved.txt","outputFileName": "secondMatrix","taskType":"decrypt", "pipeline":[{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[[434,1311,312,278,966],[204,812,934,280,1071],[626,620,809,620,626],[1071,280,934,812,204],[966,278,312,1311,434]]}]}
+
+//Hill cipher using the last 4x4 matrix found in the book (trace 10673)
+{"inputFileName":"unsolved.txt","outputFileName": "thirdMatrix","taskType":"decrypt", "pipeline":[{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[[3258,3222,3152,3038],[3278,3299,3298,2838],[3288,3294,3296,2472],[4516,1206,708,820]]}]}
+
+//Hill cipher using the three matrices found in the book
+{"inputFileName":"unsolved.txt","outputFileName": "allMatricesInSequence","taskType":"decrypt", "pipeline":[{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[[272, 138, 341, 131, 151],[366, 199, 130, 320, 18],[226, 245, 91, 245, 226],[18, 320, 130, 199, 366],[151, 131, 341, 138, 272]]},{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[[434,1311,312,278,966],[204,812,934,280,1071],[626,620,809,620,626],[1071,280,934,812,204],[966,278,312,1311,434]]},{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[[3258,3222,3152,3038],[3278,3299,3298,2838],[3288,3294,3296,2472],[4516,1206,708,820]]}]}
+
+//Generate all partitions from the numbers found in first 5x5 matrix, to search for hidden words
+{"outputFileName": "18","taskType":"partitions", "options":{"partitionMaxLength":9,"maxRepetitions":2,"minVowels":1}, "input":18}
+
+//vigenere using the second row, 18=thou
+{"inputFileName":"unsolved.txt","outputFileName": "thou","taskType":"decrypt", "pipeline":[{"cipher":"vigenere", "key":"ᚫᚦᛖᚱᛠᛚ", "splitBy":"segment"},{"cipher":"vigenere", "key":"ᛒᚢᚠᚠᛖᚱᛋ", "splitBy":"segment"},{"cipher":"vigenere", "key":"ᚢᚩᛁᛞ", "splitBy":"segment"},{"cipher":"vigenere", "key":"ᚳᚪᚱᚾᚪᛚ", "splitBy":"segment"},{"cipher":"vigenere", "key":"ᚦᚩᚢ", "splitBy":"segment"}]}
+
+//vigenere using the second row, 18=ruff
+{"inputFileName":"unsolved.txt","outputFileName": "ruff","taskType":"decrypt", "pipeline":[{"cipher":"vigenere", "key":"ᚫᚦᛖᚱᛠᛚ", "splitBy":"segment"},{"cipher":"vigenere", "key":"ᛒᚢᚠᚠᛖᚱᛋ", "splitBy":"segment"},{"cipher":"vigenere", "key":"ᚢᚩᛁᛞ", "splitBy":"segment"},{"cipher":"vigenere", "key":"ᚳᚪᚱᚾᚪᛚ", "splitBy":"segment"},{"cipher":"vigenere", "key":"ᚱᚢᚠᚠ", "splitBy":"segment"}]}
+
+//check if the values from the first matrix come from totient function
+{"taskType":"scanTotient", "valuesToSearch":[272, 138, 341, 131, 151,366, 199, 130, 320, 18,226, 245, 91]}
+
+//check if the values from the second matrix come from totient function
+{"taskType":"scanTotient", "valuesToSearch":[434,1311,312,278,966,204,812,934,280,1071,626,620,809,620,626,1071,280,934,812,204,966,278,312,1311,434]}
+
+//check if the values from the third matrix come from totient function
+{"taskType":"scanTotient", "valuesToSearch":[3258,3222,3152,3038,3278,3299,3298,2838,3288,3294,3296,2472,4516,1206,708,820]}
+
+//Hill cipher using the first 5x5 matrix (using phi(n) in place of n where available)
+{"inputFileName":"unsolved.txt","outputFileName": "firstMatrixPhi","taskType":"decrypt", "pipeline":[{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[289, 139, 341, 131, 151],[367, 199, 131, 425, 19],[227, 245, 91, 245, 227],[19, 425, 131, 199, 367],[151, 131, 341, 139, 289]]}]}
+
+//Hill cipher using the second 5x5 matrix (using phi(n) in place of n where available)
+{"inputFileName":"unsolved.txt","outputFileName": "secondMatrixPhi","taskType":"decrypt", "pipeline":[{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[434,1311,313,278,967],[309,841,934,281,1071],[626,933,809,933,626],[1071,281,934,841,309],[967,278,313,1311,434]]}]}
+
+//Hill cipher using the last 4x4 matrix found in the book (using phi(n) in place of n where available)
+{"inputFileName":"unsolved.txt","outputFileName": "thirdMatrixPhi","taskType":"decrypt", "pipeline":[{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[[3259,3222,3152,3038],[3278,3299,3299,2838],[4115,3294,3296,2473],[4517,1206,709,821]]}]}
+
+//Hill cipher using the two 5x5 matrices found in the book (using phi(n) in place of n where available)
+{"inputFileName":"unsolved.txt","outputFileName": "5by5MatricesInSequencePhi","taskType":"decrypt", "pipeline":[{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[289, 139, 341, 131, 151],[367, 199, 131, 425, 19],[227, 245, 91, 245, 227],[19, 425, 131, 199, 367],[151, 131, 341, 139, 289]]},{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[434,1311,313,278,967],[309,841,934,281,1071],[626,933,809,933,626],[1071,281,934,841,309],[967,278,313,1311,434]]}]}
+
+//Hill cipher using the three matrices found in the book (using phi(n) in place of n where available)
+{"inputFileName":"unsolved.txt","outputFileName": "allMatricesInSequencePhi","taskType":"decrypt", "pipeline":[{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[289, 139, 341, 131, 151],[367, 199, 131, 425, 19],[227, 245, 91, 245, 227],[19, 425, 131, 199, 367],[151, 131, 341, 139, 289]]},{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[434,1311,313,278,967],[309,841,934,281,1071],[626,933,809,933,626],[1071,281,934,841,309],[967,278,313,1311,434]]},{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[[3259,3222,3152,3038],[3278,3299,3299,2838],[4115,3294,3296,2473],[4517,1206,709,821]]}]}

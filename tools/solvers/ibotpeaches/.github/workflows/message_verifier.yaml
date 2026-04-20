@@ -1,0 +1,16 @@
+name: Message Verifier
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+
+jobs:
+  verify:
+    name: Verify Messages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Import CICADA 3301 key
+        run: ./scripts/import_cicada_3301_key.sh
+      - name: Verify messages
+        run: ./scripts/verify_messages.sh

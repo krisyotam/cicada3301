@@ -1,0 +1,290 @@
+{
+    "purpose":{
+        "research": {
+            "subject": {
+                "history": null,
+                "science": {
+                    "field": {
+                        "biology": null,
+                        "chemistry": null,
+                        "physics": null,
+                        "psychology": null,
+                        "mathematics": null
+                    }
+                },
+                "esoteric": null,
+                "fiction": null
+            }
+        },
+        "solution": {
+            "type": {
+                "guide": null,
+                "proof": null,
+                "attempt": null
+            }
+        },
+        "analysis":{
+            "type": {
+                "frequency": null
+            }
+        },
+        "theory":null,
+        "resource": {
+            "resource-type": {
+                "tool": {
+                    "type": {
+                        "conversion": null,
+                        "library": null,
+                        "framework": null,
+                        "visualsation": null,
+                        "manipulation": null,
+                        "automation": null
+                    },
+                    "format": {
+                        "webpage": null,
+                        "GUI": null,
+                        "CLI": null
+                    }
+                },
+                "learning-material": {
+                    "medium": {
+                        "book": null,
+                        "article": null,
+                        "image": null,
+                        "video": null
+                    }
+                }
+            }
+        },
+        "archive":null
+    },
+    "format":{
+        "code": {
+            "language": {
+                "python": null,
+                "C++": null,
+                "perl": null,
+                "java": null,
+                "javascript": null,
+                "C#": null,
+                "C": null
+            }
+        },
+        "document": null,
+        "spreadsheet": null,
+        "visualisation": null,
+        "image": null
+    },
+    "years":{
+        "2012":{"puzzles": {
+            "hello": null,
+            "subreddit": null,
+            "phone-number": null,
+            "website": null,
+            "coords": null,
+            "book-code": null
+          }},
+        "2013":null,
+        "2014":{
+            "puzzles":{
+                "liber_primus":{
+                    "aspects":{
+                        "runes":null,
+                        "symbols":{
+                          "symbol-type": {
+                            "orthadox-cross":null,
+                            "mobius-loop":null,
+                            "spirals":null,
+                            "roots":null,
+                            "mayfly":null,
+                            "dots":{
+                              "dot-types": {
+                                "5-dots":null,
+                                "3-dots":null
+                              }
+                            },
+                            "cuneiform":null,
+                            "branches":null,
+                            "cicada":null,
+                            "oak-tree":null,
+                            "insect-wing":null,
+                            "lying-man":null
+                          }
+                        },
+                        "file-contents":null
+                    },
+                    "books":{
+                        "LP1":{
+                            "chapters":{
+                                "LP1-cover":{
+                                    "pages":{
+                                        "LP1-cover":null
+                                    }
+                                },
+                                "LP1-title":{
+                                    "pages":{
+                                        "LP1-0":null
+                                    }
+                                },
+                                "LP1-warning":{
+                                    "pages":{
+                                        "LP1-1":null
+                                    }
+                                },
+                                "LP1-chapter-1":{
+                                    "pages":{
+                                        "LP1-2":null
+                                    }
+                                },
+                                "LP1-welcome":{
+                                    "pages":{
+                                        "LP1-3":null,
+                                        "LP1-4":null
+                                    }
+                                },
+                                "LP1-wisdom":{
+                                    "pages":{
+                                        "LP1-5":null
+                                    }
+                                },
+                                "LP1-koan-1":{
+                                    "pages":{
+                                        "LP1-6":null,
+                                        "LP1-7":null,
+                                        "LP1-8":null,
+                                        "LP1-9":null
+                                    }
+                                },
+                                "LP1-divinity":{
+                                    "pages":{
+                                        "LP1-10":null,
+                                        "LP1-11":null,
+                                        "LP1-12":null,
+                                        "LP1-13":null
+                                    }
+                                },
+                                "LP1-koan-2":{
+                                    "pages":{
+                                        "LP1-14":null,
+                                        "LP1-15":null
+                                    }
+                                },
+                                "LP1-instruction":{
+                                    "pages":{
+                                        "LP1-16":null
+                                    }
+                                }
+                            }
+                        },
+                        "LP2":{
+                            "chapters":{
+                                "cross-pages":{
+                                    "pages":{
+                                        "LP2-0":null,
+                                        "LP2-1":null,
+                                        "LP2-2":null
+                                    }
+                                },
+                                "spiral-pages":{
+                                    "pages":{
+                                        "LP2-3":null,
+                                        "LP2-4":null,
+                                        "LP2-5":null,
+                                        "LP2-6":null,
+                                        "LP2-7":null
+                                    }
+                                },
+                                "branch-pages":{
+                                    "pages":{
+                                        "LP2-8":null,
+                                        "LP2-9":null,
+                                        "LP2-10":null,
+                                        "LP2-11":null,
+                                        "LP2-12":null,
+                                        "LP2-13":null,
+                                        "LP2-14":null
+                                    }
+                                },
+                                "mobius-pages":{
+                                    "pages":{
+                                        "LP2-15":null,
+                                        "LP2-16":null,
+                                        "LP2-17":null,
+                                        "LP2-18":null,
+                                        "LP2-19":null,
+                                        "LP2-20":null,
+                                        "LP2-21":null,
+                                        "LP2-22":null
+                                    }
+                                },
+                                "mayfly-pages":{
+                                    "pages":{
+                                        "LP2-23":null,
+                                        "LP2-24":null,
+                                        "LP2-25":null,
+                                        "LP2-26":null
+                                    }
+                                },
+                                "wing-tree-pages":{
+                                    "pages":{
+                                        "LP2-27":null,
+                                        "LP2-28":null,
+                                        "LP2-29":null,
+                                        "LP2-30":null,
+                                        "LP2-31":null,
+                                        "LP2-32":null
+                                    }
+                                },
+                                "cuneiform-pages":{
+                                    "pages":{
+                                        "LP2-33":null,
+                                        "LP2-34":null,
+                                        "LP2-35":null,
+                                        "LP2-36":null,
+                                        "LP2-37":null,
+                                        "LP2-38":null,
+                                        "LP2-39":null
+                                    }
+                                },
+                                "spiral-branch-pages":{
+                                    "pages":{
+                                        "LP2-40":null,
+                                        "LP2-41":null,
+                                        "LP2-42":null,
+                                        "LP2-43":null,
+                                        "LP2-44":null,
+                                        "LP2-45":null,
+                                        "LP2-46":null,
+                                        "LP2-47":null,
+                                        "LP2-48":null,
+                                        "LP2-49":null,
+                                        "LP2-50":null,
+                                        "LP2-51":null,
+                                        "LP2-52":null,
+                                        "LP2-53":null,
+                                        "LP2-54":null,
+                                        "LP2-55":null
+                                    }
+                                },
+                                "an-end":{
+                                    "pages":{
+                                        "LP2-56":null
+                                    }
+                                },
+                                "parable":{
+                                    "pages":{
+                                        "LP2-57":null
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "twitter":null
+            }
+        },
+        "2015":null,
+        "2016":null,
+        "2017":null
+    }
+}

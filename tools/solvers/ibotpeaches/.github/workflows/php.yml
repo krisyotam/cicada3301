@@ -1,0 +1,41 @@
+name: PHP CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+
+jobs:
+  php:
+    name: PHP
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          coverage: 'xdebug'
+
+      - name: Cache 3301 iso
+        id: cache-3301-iso
+        uses: actions/cache@v5
+        with:
+          path: iso/3301.iso
+          key: 3301-iso-${{ runner.os }}-
+
+      - name: Download 3301 iso
+        if: steps.cache-3301-iso.outputs.cache-hit != 'true'
+        run: ./scripts/download_iso.sh
+
+      - name: Install Composer Dependencies
+        working-directory: tool
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+
+      - name: Run Pint
+        working-directory: tool
+        run: ./vendor/bin/pint --test
+
+      - name: Run Pest
+        working-directory: tool
+        run: ./vendor/bin/pest --coverage

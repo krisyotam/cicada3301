@@ -1,0 +1,85 @@
+FIRST MATRIX:
+original matrix
+272, 138, 341, 131, 151
+366, 199, 130, 320, 18
+226, 245, 91, 245, 226
+18, 320, 130, 199, 366
+151, 131, 341, 138, 272
+
+determinant:279937745129
+trace:1033
+
+Totient scan:
+phi(19) = 18
+phi(131) = 130
+phi(139) = 138
+phi(227) = 226
+phi(289) = 272
+phi(367) = 366
+phi(425) = 320
+no match for 91 (1 number)
+
+modified matrix (using phi(n) instead of n where available):
+289, 139, 341, 131, 151
+367, 199, 131, 425, 19
+227, 245, 91, 245, 227
+19, 425, 131, 199, 367
+151, 131, 341, 139, 289
+
+determinant:978117611472
+trace:1067 (not prime, divisible by 11)
+
+SECOND MATRIX:
+original matrix:
+434,1311,312,278,966
+204,812,934,280,1071
+626,620,809,620,626
+1071,280,934,812,204
+966,278,312,1311,434
+determinant:-60524962281597
+trace:3301 (prime)
+
+Totient scan:
+phi(281) = 280
+phi(309) = 204
+phi(313) = 312
+phi(841) = 812
+phi(933) = 620
+phi(967) = 966
+no match for 434,1311,278,934,1071,626,809 (7 numbers)
+
+modified matrix (using phi(n) instead of n where available):
+434,1311,313,278,967
+309,841,934,281,1071
+626,933,809,933,626
+1071,281,934,841,309
+967,278,313,1311,434
+determinant:-351639169871996
+trace:3359 (prime)
+
+THIRD MATRIX:
+original matrix:
+3258,3222,3152,3038
+3278,3299,3298,2838
+3288,3294,3296,2472
+4516,1206,708,820
+determinant:223551195520
+trace:10673 (divisible by 13)
+
+Totient scan:
+phi(709) = 708
+phi(821) = 820
+phi(2473) = 2472
+phi(3259) = 3258
+phi(3299) = 3298
+Found! phi(4115) = 3288
+phi(4517) = 4516
+no match for 3222,3152,3038,3278,3299,2838,3294,3296,1206 (9 numbers)
+
+modified matrix (using phi(n) instead of n where available):
+3259,3222,3152,3038
+3278,3299,3299,2838
+4115,3294,3296,2473
+4517,1206,709,821
+determinant:-173123426239
+trace:10675 (divisible by 5)

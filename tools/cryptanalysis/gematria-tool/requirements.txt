@@ -1,0 +1,4 @@
+coloredlogs
+whirlpool
+pyskein
+sympy

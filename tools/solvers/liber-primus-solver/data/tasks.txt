@@ -1,0 +1,14 @@
+//Hill cipher using the first 5x5 matrix (using phi(n) in place of n where available)
+{"inputFileName":"unsolved.txt","outputFileName": "firstMatrixPhi","taskType":"decrypt", "pipeline":[{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[[289, 139, 341, 131, 151],[367, 199, 131, 425, 19],[227, 245, 91, 245, 227],[19, 425, 131, 199, 367],[151, 131, 341, 139, 289]]}]}
+
+//Hill cipher using the second 5x5 matrix (using phi(n) in place of n where available)
+{"inputFileName":"unsolved.txt","outputFileName": "secondMatrixPhi","taskType":"decrypt", "pipeline":[{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[[434,1311,313,278,967],[309,841,934,281,1071],[626,933,809,933,626],[1071,281,934,841,309],[967,278,313,1311,434]]}]}
+
+//Hill cipher using the last 4x4 matrix found in the book (using phi(n) in place of n where available)
+{"inputFileName":"unsolved.txt","outputFileName": "thirdMatrixPhi","taskType":"decrypt", "pipeline":[{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[[3259,3222,3152,3038],[3278,3299,3299,2838],[4115,3294,3296,2473],[4517,1206,709,821]]}]}
+
+//Hill cipher using the two 5x5 matrices found in the book (using phi(n) in place of n where available)
+{"inputFileName":"unsolved.txt","outputFileName": "5by5MatricesInSequencePhi","taskType":"decrypt", "pipeline":[{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[[289, 139, 341, 131, 151],[367, 199, 131, 425, 19],[227, 245, 91, 245, 227],[19, 425, 131, 199, 367],[151, 131, 341, 139, 289]]},{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[[434,1311,313,278,967],[309,841,934,281,1071],[626,933,809,933,626],[1071,281,934,841,309],[967,278,313,1311,434]]}]}
+
+//Hill cipher using the three matrices found in the book (using phi(n) in place of n where available)
+{"inputFileName":"unsolved.txt","outputFileName": "allMatricesInSequencePhi","taskType":"decrypt", "pipeline":[{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[[289, 139, 341, 131, 151],[367, 199, 131, 425, 19],[227, 245, 91, 245, 227],[19, 425, 131, 199, 367],[151, 131, 341, 139, 289]]},{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[[434,1311,313,278,967],[309,841,934,281,1071],[626,933,809,933,626],[1071,281,934,841,309],[967,278,313,1311,434]]},{"cipher":"hill", "splitBy":"segment","isDecryptionMatrix":false, "matrix":[[3259,3222,3152,3038],[3278,3299,3299,2838],[4115,3294,3296,2473],[4517,1206,709,821]]}]}

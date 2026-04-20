@@ -1,0 +1,30 @@
+{
+  "name": "cicada-solver",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "NODE_OPTIONS=--max_old_space_size=4096 babel-node src/app.js",
+    "build": "babel src --out-dir dist --ignore '**/*.test.js' --copy-files && del dist/**/*.test.js",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/node": "^7.6.1",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-transform-regenerator": "^7.4.5",
+    "@babel/preset-env": "^7.6.2",
+    "del-cli": "^3.0.0",
+    "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.6.2",
+    "del": "^5.1.0",
+    "mathjs": "^6.2.2",
+    "ml-matrix": "^6.4.1",
+    "mnemonist": "^0.30.0",
+    "regenerator-runtime": "^0.13.3",
+    "translate": "^1.1.0"
+  }
+}
