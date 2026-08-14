@@ -234,3 +234,11 @@ Materials in this archive come from:
 - Press sources reproduced for research purposes
 
 This is an archival and educational project. All Cicada 3301 original materials are reproduced for research. Community tools and writeups belong to their respective authors. No copyright claim is made over third-party content.
+
+---
+
+## License
+
+Copyright (C) 2026 Kris Yotam.
+
+This repository is released as a unified work under the [GNU General Public License, version 3 or later](LICENSE). The license applies to the repository as a whole.
